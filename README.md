@@ -1,16 +1,95 @@
-# React + Vite
+# RentAdda Frontend – Old Items Rental Marketplace (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Overview
+This is the **React + Vite frontend** for **RentAdda**, a platform where users can rent **old/used items** such as:
+- Cameras
+- Laptops
+- Furniture
+- Tools
+- Bicycles
+- Appliances
+- And many more everyday items
 
-Currently, two official plugins are available:
+Users can **list items for rent**, **book items**, **chat with owners**, and **manage their rentals**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧰 Tech Stack
+- React.js (Vite)
+- React Router
+- Context API (Auth)
+- Axios (API calls)
+- Tailwind CSS (UI)
 
-## React Compiler
+## ✅ Features
+- User Authentication (JWT)
+- Browse items for rent
+- Search + Filters (category, price range, availability)
+- Item details page
+- Add / Edit / Delete rental items
+- Upload item images
+- Booking system (request → accept/reject)
+- Chat between renter & owner
+- Owner Dashboard
+- Renter Dashboard
+- Responsive UI
+- Protected Routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Installation
 
-## Expanding the ESLint configuration
+```bash
+cd frontend
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ▶️ Run Development Server
+
+```bash
+npm run dev
+```
+
+Runs at:
+```
+http://localhost:5173/
+```
+
+## ⚙️ API Configuration
+Inside axios or config:
+
+```js
+const API = "http://localhost:3000";
+```
+
+## 📁 Folder Structure
+
+```
+frontend/
+  ├── src/
+  │   ├── components/
+  │   ├── context/
+  │   └── App.jsx
+  ├── public/
+  └── package.json
+```
+
+## 🔐 Protected Route Example
+
+```jsx
+import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
+const Protected = ({ children }) => {
+  const { token } = useContext(AuthContext);
+  if (!token) return <Navigate to="/signup" replace />;
+  return children;
+};
+```
+
+## ✅ Build for Production
+```bash
+npm run build
+```
+
+---
+
+
+
